@@ -7,10 +7,10 @@ const Counter = () => {
     setCount(count + 1);
   };
   const decrease = () => {
-    setCount(count - 1);
+    setCount((prevCount) => Math.max(prevCount - 1, 0));
   };
   const reset = () => {
-    setCount(count);
+    setCount(0);
   };
   return (
     <>
@@ -28,6 +28,7 @@ const Counter = () => {
               </button>
               <button
                 onClick={() => decrease()}
+                disabled={count === 0}
                 className="p-3 rounded-xl hover:bg-red-500 bg-red-400 text-base font-medium"
               >
                 Decrement
